@@ -15,9 +15,6 @@
     {{View::make('header')}}
     @yield('content')
 
-    <h1>Employee Records:</h1>
-    
-
     {{View::make('footer')}}
 </body>
 <style>

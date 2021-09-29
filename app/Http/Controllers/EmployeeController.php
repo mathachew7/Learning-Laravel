@@ -30,6 +30,41 @@ class EmployeeController extends Controller
         $employee = employee::all();
         return view('employeefetch', compact('employee'));
     }
+    
+    public function deleteEmployee(Request $req){
+        $emp = employee::where('id', $req->id)->firstorfail()->delete();
+        //echo ("Employee Record deleted successfully.");
+        return back();
+    }
+
+    public function updateEmployee(Request $req){
+        $id = $req->id;
+        $emp = employee::find($id);
+        return view('editemployee', compact('emp'));
+    }
+
+    public function updateEmp(Request $request) {
+
+        $this->validate(request(),[
+            //put fields to be validated here
+            ]); 
+        
+        $a=employee::whereId($request->id)->update($request->except(['_method','_token']));
+        if($a){
+            return redirect('/main');
+        }else{
+            return "Problem in updating the data!";
+        }
+        // $a = employee::update($request->all());
+        // if($a != NULL){
+        //     return redirect('/fetch/data');
+        // }
+        // else{
+        //     return "There might be some problem inserting data into database";
+        // }
+    }
+
+
     // //exporting function for CSV file
     // public function exportCsv(Request $request)
     // {

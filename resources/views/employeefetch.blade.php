@@ -41,10 +41,21 @@
                                 <td>{{ $item->address }}</td>
                                 <td>{{ $item->created_at }}</td>
                                 <td>
-                                    <a href="" class="btn btn-primary btn-sm">Edit</a>
+                                
+                                    <form method="POST" action="{{route('employee.update',$item->id)}}">
+                                    @csrf
+                                    <button type="submit" class="btn btn-primary" data-toggle="modal" name="edit_btn">Edit</button>
+                                
+                                    </form>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-danger btn-sm">Delete</a>
+                                    <form method="POST" action="{{ route('employee.delete', $item->id) }}">
+                                        @csrf @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">
+                                            Delete
+                                            <i data-feather="delete"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                             @endforeach

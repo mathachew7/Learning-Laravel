@@ -16,7 +16,14 @@
       let _url = $(_this).data('href');
       window.location.href = _url;
    }
-</script>
+    </script>
+    <script>
+        function myfunction(e){
+        var x = e;
+        $('#edit_req_id').val(x);  //The id where to pass the value
+        $('#exampleModal').modal('show'); //The id of the modal to show
+        };
+    </script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
